@@ -32,7 +32,7 @@ export default function Home() {
         </h1>
 
         <p className="text-lg md:text-xl text-gray-700 leading-relaxed text-left">
-          A passionate <span className="font-semibold">Front-End Web Developer</span>
+          A passionate <span className="font-semibold">Front-End Web Developer </span>
           experienced in building responsive and dynamic web applications using
           <span className="font-semibold"> JavaScript</span>,
           <span className="font-semibold"> React.js</span>,
