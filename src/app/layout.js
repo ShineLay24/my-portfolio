@@ -5,20 +5,15 @@ import './globals.css'
 
 export const metadata = {
   title: 'Htet Aung Shine Portfolio',
-  description: 'Front-End Developer Portfolio built with Next.js & Tailwind CSS',
+  description: 'Front-End Developer portfolio — building fast, beautiful, and interactive web experiences with React, Next.js, and modern tooling.',
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-gray-100 text-gray-900 font-sans">
-        {/* Header will appear on every page */}
+      <body>
         <Header />
-
-        {/* Main content changes depending on page */}
-        <main className="flex-1">{children}</main>
-
-        {/* Footer will appear on every page */}
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

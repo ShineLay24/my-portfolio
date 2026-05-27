@@ -1,85 +1,248 @@
 "use client"
 
 import Link from 'next/link'
-import { Button } from 'antd'
-import { useState } from 'react'
-import Image from 'next/image'
+import { useState, useEffect } from 'react'
 import Lottie from "lottie-react"
-import devAnimation from "../assets/developer-skills.json"
+import devAnimation from "@/assets/developer-skills.json"
+import { ArrowRightOutlined, DownloadOutlined, GithubOutlined, LinkedinOutlined } from '@ant-design/icons'
+
+const stats = [
+  { value: '2+', label: 'Years Learning' },
+  { value: '10+', label: 'Projects Built' },
+  { value: '5+', label: 'Technologies' },
+]
 
 export default function Home() {
-  const [hoverProject, setHoverProject] = useState(false)
-  const [hoverContact, setHoverContact] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
-  const buttonStyle = {
-    width: '150px',
-    height: '50px',
-    borderRadius: '8px',
-    transition: 'all 0.3s ease',
-  }
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
-    <main className="flex flex-col md:flex-row justify-between items-center min-h-screen bg-blue-100 text-gray-900 px-8 md:px-20">
+    <div
+      className="mesh-bg"
+      style={{
+        minHeight: '100vh',
+        paddingTop: '80px',
+        display: 'flex',
+        alignItems: 'center',
+      }}
+    >
+      <div
+        style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '60px 40px',
+          width: '100%',
+        }}
+      >
+        {/* Grid layout */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '80px',
+            alignItems: 'center',
+          }}
+          className="hero-grid"
+        >
+          {/* Left: Text */}
+          <div
+            style={{
+              opacity: mounted ? 1 : 0,
+              transform: mounted ? 'none' : 'translateY(30px)',
+              transition: 'opacity 0.8s ease, transform 0.8s ease',
+            }}
+          >
+            {/* Label */}
+            <div className="section-label" style={{ marginBottom: '24px' }}>
+              Front-End Developer
+            </div>
 
-      {/* LEFT SIDE – TEXT SECTION  */}
-      <div className="flex flex-col justify-center md:w-1/2 space-y-6">
-        <p className="text-lg text-gray-600 text-left">
-          Turning ideas into interactive web experiences.
-        </p>
-
-        <h1 className="text-5xl md:text-6xl font-bold text-left">
-          Hi, I’m <span className="text-red-500">Shine.</span>
-        </h1>
-
-        <p className="text-lg md:text-xl text-gray-700 leading-relaxed text-left">
-          A passionate <span className="font-semibold">Front-End Web Developer </span>
-          experienced in building responsive and dynamic web applications using
-          <span className="font-semibold"> JavaScript</span>,
-          <span className="font-semibold"> React.js</span>,
-          <span className="font-semibold"> Next.js</span>, and other modern frameworks and libraries.
-        </p>
-
-        <div className="flex space-x-4 pt-4">
-          <Link href="/projects">
-            <Button
-              size="large"
-              type="primary"
+            {/* Headline */}
+            <h1
               style={{
-                ...buttonStyle,
-                backgroundColor: hoverProject ? 'red' : 'black',
-                borderColor: hoverProject ? 'black' : 'black',
-                color: 'white',
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(40px, 5vw, 68px)',
+                fontWeight: 800,
+                lineHeight: 1.05,
+                letterSpacing: '-0.03em',
+                color: 'var(--text)',
+                marginBottom: '24px',
               }}
-              onMouseEnter={() => setHoverProject(true)}
-              onMouseLeave={() => setHoverProject(false)}
             >
-              View Projects
-            </Button>
-          </Link>
+              Hi, I'm{' '}
+              <span
+                style={{
+                  color: 'var(--accent)',
+                  fontFamily: 'var(--font-serif)',
+                  fontWeight: 400,
+                  fontStyle: 'italic',
+                }}
+              >
+                Htet Aung
+              </span>
+              <br />
+              Shine.
+            </h1>
 
-          <Link href="/contact">
-            <Button
-              size="large"
-              type="default"
+            {/* Subtext */}
+            <p
               style={{
-                ...buttonStyle,
-                backgroundColor: hoverContact ? 'red' : 'black',
-                borderColor: hoverContact ? 'black' : 'black',
-                color: 'white',
+                fontSize: '17px',
+                lineHeight: 1.7,
+                color: 'var(--text-muted)',
+                maxWidth: '480px',
+                marginBottom: '40px',
               }}
-              onMouseEnter={() => setHoverContact(true)}
-              onMouseLeave={() => setHoverContact(false)}
             >
-              Contact Me
-            </Button>
-          </Link>
+              A passionate front-end developer crafting responsive, performant, and visually compelling web experiences using{' '}
+              <span style={{ color: 'var(--text)', fontWeight: 500 }}>React.js</span>,{' '}
+              <span style={{ color: 'var(--text)', fontWeight: 500 }}>Next.js</span>, and modern web technologies.
+            </p>
+
+            {/* CTA Buttons */}
+            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginBottom: '56px' }}>
+              <Link href="/projects" className="btn-primary">
+                View Projects
+                <ArrowRightOutlined style={{ fontSize: '12px' }} />
+              </Link>
+              <Link href="/contact" className="btn-outline">
+                Contact Me
+              </Link>
+            </div>
+
+            {/* Stats */}
+            <div
+              style={{
+                display: 'flex',
+                gap: '40px',
+                paddingTop: '40px',
+                borderTop: '1px solid var(--border)',
+              }}
+            >
+              {stats.map(({ value, label }) => (
+                <div key={label}>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-serif)',
+                      fontSize: '32px',
+                      fontStyle: 'italic',
+                      color: 'var(--accent)',
+                      lineHeight: 1,
+                      marginBottom: '4px',
+                    }}
+                  >
+                    {value}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '11px',
+                      letterSpacing: '0.1em',
+                      textTransform: 'uppercase',
+                      color: 'var(--text-dim)',
+                    }}
+                  >
+                    {label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Animation */}
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              opacity: mounted ? 1 : 0,
+              transform: mounted ? 'none' : 'translateY(30px)',
+              transition: 'opacity 0.8s 0.2s ease, transform 0.8s 0.2s ease',
+              position: 'relative',
+            }}
+          >
+            {/* Glow behind animation */}
+            <div
+              style={{
+                position: 'absolute',
+                width: '350px',
+                height: '350px',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(230,57,70,0.12) 0%, transparent 70%)',
+                pointerEvents: 'none',
+              }}
+            />
+            <Lottie
+              animationData={devAnimation}
+              loop={true}
+              style={{ width: '480px', height: '480px', maxWidth: '100%' }}
+            />
+          </div>
+        </div>
+
+        {/* Social links row */}
+        <div
+          style={{
+            display: 'flex',
+            gap: '16px',
+            marginTop: '60px',
+            paddingTop: '40px',
+            borderTop: '1px solid var(--border)',
+            alignItems: 'center',
+          }}
+        >
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--text-dim)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+            Connect
+          </span>
+          <div style={{ width: '32px', height: '1px', background: 'var(--border)' }} />
+          {[
+            { href: 'https://github.com/ShineLay24', Icon: GithubOutlined, label: 'GitHub' },
+            { href: 'https://www.linkedin.com/in/htet-aung-shine-290a26368', Icon: LinkedinOutlined, label: 'LinkedIn' },
+          ].map(({ href, Icon, label }) => (
+            <a
+              key={href}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                color: 'var(--text-muted)',
+                textDecoration: 'none',
+                fontSize: '13px',
+                fontFamily: 'var(--font-mono)',
+                transition: 'color 0.2s ease',
+              }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
+            >
+              <Icon />
+              {label}
+            </a>
+          ))}
         </div>
       </div>
 
-      {/* RIGHT SIDE – ANIMATION SECTION */}
-      <div className="mt-10 md:mt-0 md:w-1/2 flex justify-center">
-        <Lottie animationData={devAnimation} loop={true} className="w-[400px] h-[400px]" />
-      </div>
-    </main>
-  );
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+          .hero-grid > div:last-child {
+            order: -1;
+          }
+          .hero-grid > div:last-child lottie-player,
+          .hero-grid > div:last-child > div:last-child {
+            width: 280px !important;
+            height: 280px !important;
+          }
+        }
+      `}</style>
+    </div>
+  )
 }
