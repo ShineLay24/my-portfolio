@@ -182,49 +182,6 @@ export default function Home() {
             />
           </div>
         </div>
-
-        {/* Social links row */}
-        <div
-          style={{
-            display: 'flex',
-            gap: '16px',
-            marginTop: '60px',
-            paddingTop: '40px',
-            borderTop: '1px solid var(--border)',
-            alignItems: 'center',
-          }}
-        >
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--text-dim)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-            Connect
-          </span>
-          <div style={{ width: '32px', height: '1px', background: 'var(--border)' }} />
-          {[
-            { href: 'https://github.com/ShineLay24', Icon: GithubOutlined, label: 'GitHub' },
-            { href: 'https://www.linkedin.com/in/htet-aung-shine-290a26368', Icon: LinkedinOutlined, label: 'LinkedIn' },
-          ].map(({ href, Icon, label }) => (
-            <a
-              key={href}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                color: 'var(--text-muted)',
-                textDecoration: 'none',
-                fontSize: '13px',
-                fontFamily: 'var(--font-mono)',
-                transition: 'color 0.2s ease',
-              }}
-              onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
-              onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
-            >
-              <Icon />
-              {label}
-            </a>
-          ))}
-        </div>
       </div>
 
       <style>{`
