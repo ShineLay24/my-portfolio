@@ -14,10 +14,50 @@ const navLinks = [
   { href: '/services', label: 'Services' },
 ]
 
+// ── Theme Toggle Button ──────────────────────────────────────────
+function ThemeToggle() {
+  const [theme, setTheme] = useState('dark')
+  const [mounted, setMounted] = useState(false)
+ 
+  // On first load, read saved preference
+  useEffect(() => {
+    const saved = localStorage.getItem('portfolio-theme') || 'dark'
+    setTheme(saved)
+    document.documentElement.setAttribute('data-theme', saved)
+    setMounted(true)
+  }, [])
+ 
+  const toggle = () => {
+    const next = theme === 'dark' ? 'light' : 'dark'
+    setTheme(next)
+    document.documentElement.setAttribute('data-theme', next)
+    localStorage.setItem('portfolio-theme', next)
+  }
+ 
+  // Prevent hydration flash
+  if (!mounted) {
+    return <div style={{ width: 40, height: 40 }} />
+  }
+ 
+  return (
+    <button
+      onClick={toggle}
+      className="theme-toggle"
+      title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label="Toggle theme"
+    >
+      <span key={theme} className="theme-toggle-icon">
+        {theme === 'dark' ? '☀️' : '🌙'}
+      </span>
+    </button>
+  )
+}
+
 export default function Header() {
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [theme, setTheme] = useState('dark')
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -25,9 +65,22 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Keep local theme state in sync so mobile menu bg matches
+  useEffect(() => {
+    const saved = localStorage.getItem('portfolio-theme') || 'dark'
+    setTheme(saved)
+    const observer = new MutationObserver(() => {
+      setTheme(document.documentElement.getAttribute('data-theme') || 'dark')
+    })
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+    return () => observer.disconnect()
+  }, [])
+
   useEffect(() => {
     setMenuOpen(false)
   }, [pathname])
+
+  const isLight = theme === 'light'
 
   return (
     <>
@@ -40,9 +93,11 @@ export default function Header() {
           zIndex: 1000,
           padding: scrolled ? '12px 40px' : '20px 40px',
           background: scrolled
-            ? 'rgba(10, 10, 15, 0.95)'
+            ? isLight
+              ? 'rgba(245, 244, 240, 0.92)'
+              : 'rgba(10, 10, 15, 0.95)'
             : 'transparent',
-          borderBottom: scrolled ? '1px solid rgba(42, 42, 56, 0.8)' : 'none',
+          borderBottom: scrolled ? '1px solid var(--border)' : 'none',
           backdropFilter: scrolled ? 'blur(12px)' : 'none',
           transition: 'all 0.4s ease',
           display: 'flex',
@@ -118,7 +173,9 @@ export default function Header() {
         </nav>
 
         {/* Right side */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <ThemeToggle />
+          
           <Link
             href="/contact"
             className="hidden md:inline-flex btn-primary"

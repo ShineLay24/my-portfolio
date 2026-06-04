@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* Dark mode (default) */
 :root {
   --bg: #0a0a0f;
   --surface: #111118;
@@ -15,6 +16,21 @@
   --font-display: 'Syne', sans-serif;
   --font-mono: 'DM Mono', monospace;
   --font-serif: 'Fraunces', serif;
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Light mode */
+[data-theme="light"] {
+  --bg: #f5f4f0;
+  --surface: #ffffff;
+  --surface2: #eceaf4;
+  --border: #dddbe8;
+  --accent: #e63946;
+  --accent2: #c8202d;
+  --text: #0a0a0f;
+  --text-muted: #555566;
+  --text-dim: #999aaa;
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -33,17 +49,15 @@ body {
   font-family: var(--font-display);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-/* Selection */
 ::selection { background: var(--accent); color: white; }
 
-/* Noise texture overlay */
 body::before {
   content: '';
   position: fixed;
@@ -52,9 +66,13 @@ body::before {
   pointer-events: none;
   z-index: 9999;
   opacity: 0.4;
+  transition: opacity 0.4s ease;
 }
 
-/* Page transition */
+[data-theme="light"] body::before {
+  opacity: 0;
+}
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -64,29 +82,29 @@ body::before {
   from { opacity: 0; transform: translateX(-30px); }
   to { opacity: 1; transform: translateX(0); }
 }
- 
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(230, 57, 70, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(230, 57, 70, 0.6); }
+
+@keyframes toggleSlide {
+  from { transform: scale(0.8) rotate(-20deg); opacity: 0; }
+  to { transform: scale(1) rotate(0deg); opacity: 1; }
 }
 
-.animate-fade-up {
-  animation: fadeUp 0.7s ease forwards;
-}
- 
-.animate-slide-in {
-  animation: slideIn 0.6s ease forwards;
-}
+.animate-fade-up { animation: fadeUp 0.7s ease forwards; }
+.animate-slide-in { animation: slideIn 0.6s ease forwards; }
 
-/* Gradient mesh background */
 .mesh-bg {
-  background: 
+  background:
     radial-gradient(ellipse 80% 60% at 20% 20%, rgba(230, 57, 70, 0.06) 0%, transparent 60%),
     radial-gradient(ellipse 60% 80% at 80% 80%, rgba(78, 205, 196, 0.04) 0%, transparent 60%),
     var(--bg);
 }
 
-/* Accent line decoration */
+[data-theme="light"] .mesh-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 20%, rgba(230, 57, 70, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 80%, rgba(78, 205, 196, 0.03) 0%, transparent 60%),
+    var(--bg);
+}
+
 .accent-line {
   display: inline-block;
   width: 40px;
@@ -96,7 +114,6 @@ body::before {
   vertical-align: middle;
 }
 
-/* Tag style */
 .tag {
   display: inline-flex;
   align-items: center;
@@ -107,11 +124,10 @@ body::before {
   letter-spacing: 0.05em;
   background: rgba(230, 57, 70, 0.1);
   border: 1px solid rgba(230, 57, 70, 0.2);
-  color: var(--accent2);
+  color: var(--accent);
   text-transform: uppercase;
 }
 
-/* Section heading style */
 .section-label {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -132,7 +148,6 @@ body::before {
   background: var(--accent);
 }
 
-/* Card hover effect */
 .card-hover {
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -143,7 +158,6 @@ body::before {
   box-shadow: 0 8px 32px rgba(230, 57, 70, 0.15);
 }
 
-/* Button styles */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -161,13 +175,13 @@ body::before {
   transition: all 0.3s ease;
   text-decoration: none;
 }
- 
+
 .btn-primary:hover {
   background: var(--accent2);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(230, 57, 70, 0.4);
 }
- 
+
 .btn-outline {
   display: inline-flex;
   align-items: center;
@@ -184,21 +198,19 @@ body::before {
   transition: all 0.3s ease;
   text-decoration: none;
 }
- 
+
 .btn-outline:hover {
   border-color: var(--accent);
   color: var(--accent);
   transform: translateY(-2px);
 }
 
-/* Divider */
 .divider {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--border), transparent);
   margin: 0;
 }
 
-/* Number decoration */
 .num-decoration {
   font-family: var(--font-serif);
   font-size: 80px;
@@ -210,4 +222,28 @@ body::before {
   top: -20px;
   pointer-events: none;
   user-select: none;
+}
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  background: rgba(230, 57, 70, 0.06);
+}
+
+.theme-toggle-icon {
+  animation: toggleSlide 0.35s ease both;
 }
