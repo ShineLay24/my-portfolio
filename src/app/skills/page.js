@@ -12,6 +12,7 @@ const skillCategories = [
       { name: 'HTML5', level: 95 },
       { name: 'CSS3', level: 90 },
       { name: 'TypeScript', level: 65 },
+      { name: 'PHP', level: 35 },
     ],
   },
   {
@@ -52,12 +53,11 @@ const skillCategories = [
 const tools = [
   { name: 'VS Code', icon: '🖥' },
   { name: 'GitHub', icon: '🐙' },
-  { name: 'Figma', icon: '🎨' },
   { name: 'Vercel', icon: '▲' },
-  { name: 'Postman', icon: '📮' },
-  { name: 'Chrome DevTools', icon: '🔍' },
   { name: 'GitLab', icon: '🦊' },
-  { name: 'Netlify', icon: '🌐' },
+  { name: 'Canva', icon: '🎨' },
+  { name: 'Claude', icon: '🧠' },
+  { name: 'Gemini', icon: '🤖' }, 
 ]
 
 function SkillBar({ name, level, color, animate }) {
@@ -168,7 +168,7 @@ export default function SkillsPage() {
             </span>
           </h1>
           <p style={{ fontSize: '17px', color: 'var(--text-muted)', maxWidth: '560px', lineHeight: 1.7, marginBottom: '64px' }}>
-            A breakdown of my technical skills and the tools I use to build modern, responsive web applications.
+            A breakdown of the technical skills, frameworks, and tools I use to build modern, responsive web applications.
           </p>
         </FadeIn>
 

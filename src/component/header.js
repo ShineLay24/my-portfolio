@@ -11,7 +11,6 @@ const navLinks = [
   { href: '/projects', label: 'Projects' },
   { href: '/skills', label: 'Skills' },
   { href: '/experience', label: 'Experience' },
-  { href: '/services', label: 'Services' },
 ]
 
 // ── Theme Toggle Button ──────────────────────────────────────────
