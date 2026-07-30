@@ -7,9 +7,9 @@ import devAnimation from "@/assets/developer-skills.json"
 import { ArrowRightOutlined, DownloadOutlined, GithubOutlined, LinkedinOutlined } from '@ant-design/icons'
 
 const stats = [
-  { value: '2+', label: 'Years Learning' },
-  { value: '10+', label: 'Projects Built' },
-  { value: '5+', label: 'Technologies' },
+  { value: '3+', label: 'Years Learning' },
+  { value: '5+', label: 'Projects Built' },
+  { value: '10+', label: 'Tech Stack' },
 ]
 
 export default function Home() {
@@ -64,27 +64,27 @@ export default function Home() {
             <h1
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(40px, 5vw, 68px)',
-                fontWeight: 800,
+                fontSize: 'clamp(40px, 5vw, 60px)',
+                fontWeight: 500,
                 lineHeight: 1.05,
                 letterSpacing: '-0.03em',
                 color: 'var(--text)',
                 marginBottom: '24px',
               }}
             >
-              Hi, I'm{' '}
+              Hi, I'm Htet Aung
+              <br />
               <span
                 style={{
                   color: 'var(--accent)',
+                  fontSize: '75px',
                   fontFamily: 'var(--font-serif)',
-                  fontWeight: 400,
+                  fontWeight: 700,
                   fontStyle: 'italic',
                 }}
               >
-                Htet Aung
+                 Shine.
               </span>
-              <br />
-              Shine.
             </h1>
 
             {/* Subtext */}
@@ -97,9 +97,9 @@ export default function Home() {
                 marginBottom: '40px',
               }}
             >
-              A passionate front-end developer crafting responsive, performant, and visually compelling web experiences using{' '}
-              <span style={{ color: 'var(--text)', fontWeight: 500 }}>React.js</span>,{' '}
-              <span style={{ color: 'var(--text)', fontWeight: 500 }}>Next.js</span>, and modern web technologies.
+              A front-end developer who enjoys turning ideas into interactive, responsive web experiences. 
+              I build accessible and high-performance web applications with a focus on usability, 
+              clean and maintainable code, and thoughtful design.
             </p>
 
             {/* CTA Buttons */}

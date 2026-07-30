@@ -7,39 +7,40 @@ import Link from 'next/link'
 const techStack = [
   'JavaScript (ES6+)', 'TypeScript', 'React.js', 'Next.js',
   'HTML5 & CSS3', 'Tailwind CSS', 'Ant Design', 'Git & GitHub',
-  'REST APIs', 'Responsive Design', 'Node.js (basics)', 'Figma',
+  'REST APIs', 'Responsive Design', 'Node.js (basics)', 'Canva',
+  'Adobe Photoshop', 'Microsft 365'
 ]
 
 const education = [
   {
-    degree: 'Diploma in Infocomm & Digital Media',
-    institution: 'Nanyang Polytechnic',
-    period: '2023 – Present',
-    description: 'Specializing in web development and front-end technologies, building projects with React, Next.js, and modern UI frameworks.',
+    degree: 'Advanced Diploma in Information technology',
+    institution: 'Academies Australasia College Singapore',
+    period: '2024 – 2025',
+    description: 'Focused on software development and modern web technologies, with hands-on experience building web applications using front-end frameworks, responsive design principles, and modern development practices.',
   },
   {
-    degree: 'Secondary Education',
-    institution: 'Adventist International School',
-    period: '2018 – 2022',
-    description: 'Strong foundation in mathematics and sciences, with early introduction to programming and digital design.',
+    degree: 'Diploma in Information technology',
+    institution: 'RI IT College',
+    period: '2022 – 2023',
+    description: 'Developed a strong foundation in programming, database systems, web development, and software development fundamentals through practical projects and technical coursework.'
   },
 ]
 
 const values = [
   {
     icon: '⚡',
-    title: 'Performance-First',
-    desc: 'I care deeply about building fast, optimized websites that load quickly and run smoothly on any device.',
+    title: 'Fast & Responsive',
+    desc: 'I develop responsive web experiences that prioritize performance, accessibility, and smooth user interactions.',
   },
   {
     icon: '🎨',
-    title: 'Design-Aware',
-    desc: 'I bridge the gap between design and engineering — understanding both Figma mockups and production code.',
+    title: 'UI & UX Mindset',
+    desc: 'I combine design and development to build visually attractive, responsive, and user-friendly web applications.',
   },
   {
     icon: '🔨',
     title: 'Clean Code',
-    desc: 'I write modular, reusable, and well-structured code that\'s maintainable and scalable for teams.',
+    desc: 'I focus on writing organized, reusable, and maintainable clean code to build reliable web applications.',
   },
 ]
 
@@ -87,8 +88,12 @@ export default function AboutPage() {
             marginBottom: '24px',
           }}>
             Building the web,{' '}
-            <span style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 400, color: 'var(--accent)' }}>
-              one pixel at a time.
+            <span style={{ 
+              fontFamily: 'var(--font-serif)', 
+              fontStyle: 'italic', 
+              fontWeight: 400, 
+              color: 'var(--accent)' }}>
+                one pixel at a time.
             </span>
           </h1>
           <p style={{
@@ -98,7 +103,8 @@ export default function AboutPage() {
             lineHeight: 1.7,
             marginBottom: '64px',
           }}>
-            I'm a Front-End Developer based in Singapore, passionate about creating web experiences that are both functional and beautiful.
+            I'm a Front-End Developer based in Yangon, Myanmar. Passionate about creating web experiences 
+            that are both functional and beautiful.
           </p>
         </FadeIn>
 
@@ -110,18 +116,30 @@ export default function AboutPage() {
               <div className="section-label" style={{ marginBottom: '20px' }}>
                 <UserOutlined /> Who I Am
               </div>
-              <div style={{ fontSize: '15px', color: 'var(--text-muted)', lineHeight: 1.9, display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ 
+                fontSize: '15px', 
+                color: 'var(--text-muted)', 
+                lineHeight: 1.9, 
+                display: 'flex', 
+                flexDirection: 'column', 
+                gap: '16px' }}>
                 <p>
-                  I'm <strong style={{ color: 'var(--text)' }}>Htet Aung Shine</strong>, a Front-End Web Developer and polytechnic student currently studying Infocomm & Digital Media at Nanyang Polytechnic in Singapore.
+                  I'm <strong style={{ color: 'var(--text)' }}>Htet Aung Shine</strong>, a Front-End Developer 
+                  focused on building modern web applications with clean code and thoughtful design.
                 </p>
                 <p>
-                  My journey into web development started from a genuine curiosity about how websites work — and grew into a passion for building fast, interactive, and visually polished user interfaces.
+                  My journey into web development started when I began studying IT, where I discovered 
+                  my passion for coding, logical thinking, and problem-solving. What started as curiosity 
+                  about how technology works grew into a passion for developing user-focused applications 
+                  and bringing creative ideas to life through code.
                 </p>
                 <p>
-                  I specialize in <strong style={{ color: 'var(--text)' }}>React.js</strong> and <strong style={{ color: 'var(--text)' }}>Next.js</strong>, with a strong focus on responsive design, component architecture, and modern JavaScript patterns.
+                  I specialize in React-based front-end development, focusing on responsive design, 
+                  reusable components, and modern UI/UX.
                 </p>
                 <p>
-                  When I'm not coding, I'm exploring new design trends, contributing to open-source projects, or building personal projects to sharpen my skills.
+                  When I'm not coding, I enjoy exploring design trends, learning new technologies, 
+                  and bringing new ideas to life through personal projects.
                 </p>
               </div>
 

@@ -82,7 +82,10 @@ function FadeIn({ children, delay = 0 }) {
     return () => obs.disconnect()
   }, [])
   return (
-    <div ref={ref} style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(24px)', transition: `opacity 0.6s ${delay}s ease, transform 0.6s ${delay}s ease` }}>
+    <div ref={ref} style={{ 
+      opacity: visible ? 1 : 0, 
+      transform: visible ? 'none' : 'translateY(24px)', 
+      transition: `opacity 0.6s ${delay}s ease, transform 0.6s ${delay}s ease` }}>
       {children}
     </div>
   )
@@ -109,13 +112,23 @@ export default function ProjectsPage() {
             marginBottom: '16px',
           }}>
             Selected{' '}
-            <span style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 400, color: 'var(--accent)' }}>
+            <span style={{ 
+              fontFamily: 'var(--font-serif)', 
+              fontStyle: 'italic', 
+              fontWeight: 400, 
+              color: 'var(--accent)' }}>
               Projects
             </span>
           </h1>
-          <p style={{ fontSize: '17px', color: 'var(--text-muted)', maxWidth: '560px', lineHeight: 1.7, marginBottom: '48px' }}>
-            A collection of projects I've built, showcasing my approach to front-end development, UI design, and problem solving.
-          </p>
+          <p style={{ 
+            fontSize: '17px', 
+            color: 'var(--text-muted)', 
+            maxWidth: '560px', 
+            lineHeight: 1.7, 
+            marginBottom: '48px' }}>
+            A collection of projects that showcase my approach to front-end development, user-focused design, 
+            and transforming ideas into functional and respoonsive web applications.
+            </p>
 
           {/* Filter */}
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '64px' }}>
@@ -171,7 +184,7 @@ export default function ProjectsPage() {
                 Want to see more?
               </h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '14px' }}>
-                Check out my GitHub for more projects and open-source contributions.
+                Check out my GitHub for more projects.
               </p>
             </div>
             <a
