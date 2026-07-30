@@ -6,7 +6,7 @@ import { FaGitlab, FaWhatsapp } from 'react-icons/fa'
 
 const socialLinks = [
   { href: 'mailto:shinelay2499@gmail.com', Icon: MailOutlined, label: 'Email', value: 'shinelay2499@gmail.com', color: '#e63946' },
-  { href: 'https://github.com/ShineLay24', Icon: GithubOutlined, label: 'GitHub', value: 'ShineLay24', color: '#f0eff4' },
+  { href: 'https://github.com/ShineLay24', Icon: GithubOutlined, label: 'GitHub', value: 'ShineLay24', color: '#1a191b' },
   { href: 'https://www.linkedin.com/in/htet-aung-shine-290a26368', Icon: LinkedinOutlined, label: 'LinkedIn', value: 'Htet Aung Shine', color: '#0a66c2' },
   { href: 'https://wa.me/6590169754', Icon: FaWhatsapp, label: 'WhatsApp', value: '+65 9016 9754', color: '#25d366' },
 ]
