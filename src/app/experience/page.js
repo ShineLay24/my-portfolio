@@ -5,63 +5,84 @@ import { DownloadOutlined, CalendarOutlined, EnvironmentOutlined } from '@ant-de
 
 const experiences = [
   {
-    role: 'Front-End Developer Intern',
-    company: 'Seeking Opportunities',
-    period: '2025 – Present',
-    location: 'Singapore',
-    type: 'Internship',
-    description: 'Actively seeking front-end development internship opportunities to apply and grow my React.js and Next.js skills in a professional environment.',
-    skills: ['React.js', 'Next.js', 'Tailwind CSS'],
+    id: 'november-house',
+    role: 'IT Support',
+    company: 'November House A Creative Company',
+    period: '2026 – Present',
+    location: 'Yangon, Myanmar',
+    type: 'Full-time',
+    description: 'Providing IT support for the agency, including managing IT equipment, troubleshooting hardware and software issues, supporting users, and maintaining IT-related operations.',
+    skills: ['IT Support', 'Hardware Troubleshooting', 'Software Troubleshooting', 'IT Asset Management',],
     color: '#e63946',
     current: true,
   },
   {
-    role: 'Freelance Web Developer',
-    company: 'Self-Employed',
-    period: '2023 – Present',
-    location: 'Remote',
-    type: 'Freelance',
-    description: 'Designing and developing responsive websites for small businesses and personal clients. Focused on clean UI implementation, performance, and maintainability.',
-    skills: ['React.js', 'Next.js', 'HTML/CSS', 'Tailwind CSS', 'Client Communication'],
+    id: 'lolc',
+    role: 'IT Support',
+    company: 'LOLC Myanmar Micro Finance',
+    period: '2026',
+    location: 'Yangon, Myanmar',
+    type: 'Full-time',
+    description: 'Provided IT support for Head Office and branch users, including remote and on-site troubleshooting, printer and computer support, IT equipment inventory, network troubleshooting, and Windows installation.',
+    skills: ['IT Support', 'Remote Support', 'Hardware Troubleshooting', 'Network Troubleshooting', 'IT Asset Management',],
     color: '#4ecdc4',
     current: false,
   },
   {
-    role: 'Personal Projects & Self-Study',
-    company: 'Independent',
-    period: '2022 – Present',
+    id: 'aac-project-manager',
+    role: 'Project Manager',
+    company: 'Academies Australasia College Singapore (AAC)',
+    period: 'Feb 2025 – Mar 2025',
     location: 'Singapore',
-    type: 'Self-Study',
-    description: 'Built 10+ personal projects exploring React patterns, API integration, authentication, state management, and modern UI design systems. Continuously learning through tutorials, documentation, and open source.',
-    skills: ['JavaScript', 'React.js', 'Next.js', 'REST APIs', 'Git'],
+    type: 'Project',
+    description: 'Led a team of 10 in organizing a campus-wide IT awareness event. Coordinated school announcements and promotional materials, and managed the Cybersecurity Awareness booth, engaging over 200 participants.',
+    skills: ['Project Management', 'Team Coordination', 'Cybersecurity Awareness', 'Event Management',],
     color: '#c9a84c',
+    current: false,
+  },
+  {
+    id: 'ri-ats',
+    role: 'Web Developer & Video Editor',
+    company: 'RI Institute & ATS',
+    period: '2023 – 2024',
+    location: 'Yangon, Myanmar',
+    type: 'Full-time',
+    description: 'Collaborated with a senior developer to build and update static websites for RI Institute and ATS. Worked on UI/UX design, homepage layouts, and login/register pages, while also editing online course videos for the RI Institute e-learning platform.',
+    skills: ['HTML/CSS', 'JavaScript', 'UI/UX', 'Web Development', 'Video Editing',],
+    color: '#4ecdc4',
+    current: false,
+  },
+  {
+    id: 'alpha-x',
+    role: 'Front-End Developer Intern',
+    company: 'Alpha X Training Center',
+    period: 'Jul 2023 – Aug 2023',
+    location: 'Yangon, Myanmar',
+    type: 'Internship',
+    description: 'Worked on Track X, a static music listening platform. Built CMS tables and implemented content data, contributed to UI/UX improvements, and developed responsive React.js components under mentor guidance.',
+    skills: ['React.js', 'JavaScript', 'CMS', 'UI/UX', 'Responsive Design',],
+    color: '#e63946',
     current: false,
   },
 ]
 
 const education = [
   {
-    degree: 'Diploma in Infocomm & Digital Media',
-    institution: 'Nanyang Polytechnic',
-    period: '2023 – Present',
+    degree: 'Advanced Diploma in Information Technology',
+    institution: 'Academies Australasia College (AAC)',
+    period: '2024 – 2025',
     location: 'Singapore',
-    gpa: 'In Progress',
+    gpa: 'Completed',
     color: '#e63946',
   },
   {
-    degree: 'Secondary Education (O-Levels)',
-    institution: 'Adventist International School',
-    period: '2018 – 2022',
-    location: 'Singapore',
+    degree: 'Diploma in Information Technology',
+    institution: 'RI Institute',
+    period: '2022 – 2023',
+    location: 'Yangon, Myanmar',
     gpa: 'Completed',
     color: '#4ecdc4',
   },
-]
-
-const certifications = [
-  { name: 'JavaScript Algorithms & Data Structures', issuer: 'freeCodeCamp', year: '2024', color: '#f59e0b' },
-  { name: 'Responsive Web Design', issuer: 'freeCodeCamp', year: '2024', color: '#22c55e' },
-  { name: 'React – The Complete Guide', issuer: 'Udemy', year: '2024', color: '#a855f7' },
 ]
 
 function FadeIn({ children, delay = 0 }) {
@@ -103,21 +124,21 @@ export default function ExperiencePage() {
                 </span>
               </h1>
               <p style={{ fontSize: '17px', color: 'var(--text-muted)', maxWidth: '560px', lineHeight: 1.7 }}>
-                My professional journey, education background, and certifications.
+                My professional experience, education background, and selected projects.
               </p>
             </div>
-            <button
+            <a
+              href="/resume/Resume (Htet Aung Shine).pdf"
+              download="Resume (Htet Aung Shine).pdf"
               className="btn-primary"
-              style={{ alignSelf: 'flex-end' }}
-              onClick={() => alert('CV download coming soon!')}
-            >
+              style={{ alignSelf: 'flex-end', textDecoration: 'none' }}>
               <DownloadOutlined />
               Download CV
-            </button>
+            </a>
           </div>
         </FadeIn>
 
-        {/* Work experience timeline */}
+        {/* Experience */}
         <FadeIn delay={0.1}>
           <div className="section-label" style={{ marginBottom: '8px' }}>Work & Projects</div>
           <h2 style={{ fontSize: '28px', fontWeight: 800, letterSpacing: '-0.02em', marginBottom: '40px' }}>Experience</h2>
@@ -135,7 +156,7 @@ export default function ExperiencePage() {
           }} />
 
           {experiences.map((exp, i) => (
-            <FadeIn key={exp.role} delay={i * 0.1}>
+            <FadeIn key={exp.id} delay={i * 0.1}>
               <div style={{ position: 'relative', marginBottom: '48px' }}>
                 {/* Dot */}
                 <div style={{
@@ -248,46 +269,6 @@ export default function ExperiencePage() {
                 <h3 style={{ fontSize: '17px', fontWeight: 700, marginBottom: '6px' }}>{edu.degree}</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '14px', marginBottom: '4px' }}>{edu.institution}</p>
                 <p style={{ color: 'var(--text-dim)', fontSize: '12px', fontFamily: 'var(--font-mono)' }}>{edu.location} · {edu.gpa}</p>
-              </div>
-            ))}
-          </div>
-        </FadeIn>
-
-        {/* Certifications */}
-        <FadeIn delay={0.1}>
-          <div className="divider" style={{ marginBottom: '60px' }} />
-          <div className="section-label" style={{ marginBottom: '8px' }}>Credentials</div>
-          <h2 style={{ fontSize: '28px', fontWeight: 800, letterSpacing: '-0.02em', marginBottom: '40px' }}>Certifications</h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {certifications.map(cert => (
-              <div key={cert.name} className="card-hover" style={{
-                padding: '20px 28px',
-                border: '1px solid var(--border)',
-                borderRadius: '12px',
-                background: 'var(--surface)',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                flexWrap: 'wrap',
-                gap: '12px',
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: cert.color }} />
-                  <div>
-                    <div style={{ fontWeight: 600, fontSize: '15px', marginBottom: '3px' }}>{cert.name}</div>
-                    <div style={{ fontSize: '13px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>{cert.issuer}</div>
-                  </div>
-                </div>
-                <span style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '12px',
-                  color: cert.color,
-                  border: `1px solid ${cert.color}44`,
-                  padding: '4px 12px',
-                  borderRadius: '4px',
-                }}>
-                  {cert.year}
-                </span>
               </div>
             ))}
           </div>

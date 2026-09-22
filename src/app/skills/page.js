@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from 'react'
+import { SiGithub, SiVercel, SiGitlab, SiClaude, SiGooglegemini } from 'react-icons/si'
 
 const skillCategories = [
   {
@@ -8,11 +9,12 @@ const skillCategories = [
     icon: '{ }',
     color: '#e63946',
     skills: [
-      { name: 'JavaScript (ES6+)', level: 85 },
+      { name: 'JavaScript (ES6+)', level: 80 },
       { name: 'HTML5', level: 95 },
       { name: 'CSS3', level: 90 },
-      { name: 'TypeScript', level: 65 },
-      { name: 'PHP', level: 35 },
+      { name: 'TypeScript', level: 75 },
+      { name: 'PHP', level: 45 },
+      { name: 'SQL', level: 45 },
     ],
   },
   {
@@ -20,44 +22,63 @@ const skillCategories = [
     icon: '⚛',
     color: '#4ecdc4',
     skills: [
-      { name: 'React.js', level: 85 },
-      { name: 'Next.js', level: 80 },
+      { name: 'React', level: 85 },
+      { name: 'Next.js', level: 85 },
       { name: 'Tailwind CSS', level: 90 },
       { name: 'Ant Design', level: 80 },
+      { name: 'Bootstrap', level: 80 },
+      { name: 'Laravel', level: 50 },
     ],
   },
   {
     title: 'Tools & Workflow',
     icon: '🛠',
-    color: '#c9a84c',
+    color: '#f97316',
     skills: [
       { name: 'Git & GitHub', level: 80 },
       { name: 'VS Code', level: 90 },
-      { name: 'Figma', level: 70 },
       { name: 'npm / yarn', level: 85 },
+      { name: 'Vercel', level: 50 },
+      { name: 'Canva', level: 80 },
     ],
   },
   {
-    title: 'Concepts',
+    title: 'Technical Concepts',
     icon: '💡',
     color: '#a855f7',
     skills: [
-      { name: 'Responsive Design', level: 90 },
-      { name: 'REST APIs', level: 80 },
-      { name: 'Component Architecture', level: 82 },
-      { name: 'Performance Optimization', level: 70 },
+      { name: 'Responsive Design', level: 95 },
+      { name: 'Design Systems', level: 85 },
+      { name: 'Component Architecture', level: 85 },
+      { name: 'REST APIs', level: 75 },
+      { name: 'Performance Optimization', level: 80 },
+      { name: 'Technical Documentation', level: 75 },
+    ],
+  },
+  {
+    title: 'Soft Skills',
+    icon: '🤝',
+    color: '#c9a84c',
+    skills: [
+      { name: 'Communication', level: 85 },
+      { name: 'Problem Solving', level: 90 },
+      { name: 'Event & Project Coordination', level: 80 },
+      { name: 'Adaptability', level: 85 },
+      { name: 'Collaboration', level: 85 },
+      { name: 'Team Leadership', level: 80 },
     ],
   },
 ]
 
 const tools = [
-  { name: 'VS Code', icon: '🖥' },
-  { name: 'GitHub', icon: '🐙' },
-  { name: 'Vercel', icon: '▲' },
-  { name: 'GitLab', icon: '🦊' },
-  { name: 'Canva', icon: '🎨' },
-  { name: 'Claude', icon: '🧠' },
-  { name: 'Gemini', icon: '🤖' }, 
+  { name: 'VS Code', imgSrc: '/logo/vscode.png', color: '#007ACC' },
+  { name: 'GitHub', Icon: SiGithub, color: '#ffffff' },
+  { name: 'Vercel', Icon: SiVercel, color: '#ffffff' },
+  { name: 'GitLab', Icon: SiGitlab, color: '#FC6D26' },
+  { name: 'Canva', imgSrc: '/logo/canva.png', color: '#00C4CC' },
+  { name: 'Claude', Icon: SiClaude, color: '#D97757' },
+  { name: 'Gemini', Icon: SiGooglegemini, color: '#4285F4' },
+  { name: 'ChatGPT', imgSrc: '/logo/chatgpt.png', color: '#00A67E' },
 ]
 
 function SkillBar({ name, level, color, animate }) {
@@ -108,7 +129,7 @@ function CategoryCard({ category, delay }) {
   const ref = useRef(null)
   const [animate, setAnimate] = useState(false)
   useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setTimeout(() => setAnimate(true), delay * 1000) ; obs.disconnect() } }, { threshold: 0.2 })
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setTimeout(() => setAnimate(true), delay * 1000); obs.disconnect() } }, { threshold: 0.2 })
     if (ref.current) obs.observe(ref.current)
     return () => obs.disconnect()
   }, [delay])
@@ -187,7 +208,7 @@ export default function SkillsPage() {
             Tools I Use
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '16px' }}>
-            {tools.map(({ name, icon }) => (
+            {tools.map(({ name, Icon, imgSrc, color }) => (
               <div
                 key={name}
                 className="card-hover"
@@ -203,7 +224,24 @@ export default function SkillsPage() {
                   cursor: 'default',
                 }}
               >
-                <span style={{ fontSize: '28px' }}>{icon}</span>
+                <div style={{
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '10px',
+                  background: `${color}18`,
+                  border: `1px solid ${color}40`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '22px',
+                  color,
+                }}>
+                  {imgSrc ? (
+                    <img src={imgSrc} alt={name} style={{ width: '22px', height: '22px' }} />
+                  ) : (
+                    Icon && <Icon />
+                  )}
+                </div>
                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--text-muted)', textAlign: 'center' }}>{name}</span>
               </div>
             ))}
@@ -221,7 +259,7 @@ export default function SkillsPage() {
           }}>
             <div className="section-label" style={{ marginBottom: '12px' }}>Currently Learning</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-              {['Node.js & Express', 'PostgreSQL', 'Docker', 'Testing (Jest/RTL)', 'Three.js'].map(item => (
+              {['Node.js & Express.js', 'MySQL', 'Docker', 'Testing (Jest/RTL)'].map(item => (
                 <div key={item} style={{
                   padding: '8px 16px',
                   border: '1px dashed rgba(230,57,70,0.4)',

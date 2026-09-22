@@ -7,8 +7,7 @@ import Link from 'next/link'
 const techStack = [
   'JavaScript (ES6+)', 'TypeScript', 'React.js', 'Next.js',
   'HTML5 & CSS3', 'Tailwind CSS', 'Ant Design', 'Git & GitHub',
-  'REST APIs', 'Responsive Design', 'Node.js (basics)', 'Canva',
-  'Adobe Photoshop', 'Microsft 365'
+  'REST APIs', 'Node.js (basic)', 'Canva',
 ]
 
 const education = [

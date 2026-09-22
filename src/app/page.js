@@ -7,7 +7,7 @@ import devAnimation from "@/assets/developer-skills.json"
 import { ArrowRightOutlined, DownloadOutlined, GithubOutlined, LinkedinOutlined } from '@ant-design/icons'
 
 const stats = [
-  { value: '3+', label: 'Years Learning' },
+  { value: '5+', label: 'Years Learning' },
   { value: '5+', label: 'Projects Built' },
   { value: '10+', label: 'Tech Stack' },
 ]
