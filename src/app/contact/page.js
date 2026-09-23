@@ -36,7 +36,6 @@ export default function ContactPage() {
             letterSpacing: '-0.03em',
             lineHeight: 1.05,
             marginBottom: '16px',
-            whiteSpace: 'nowrap',
           }}>
             Let's Build Something{' '} <br />
             <span style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 400, color: 'var(--accent)' }}>

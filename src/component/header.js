@@ -17,27 +17,25 @@ const navLinks = [
 function ThemeToggle() {
   const [theme, setTheme] = useState('dark')
   const [mounted, setMounted] = useState(false)
- 
-  // On first load, read saved preference
+
   useEffect(() => {
     const saved = localStorage.getItem('portfolio-theme') || 'dark'
     setTheme(saved)
     document.documentElement.setAttribute('data-theme', saved)
     setMounted(true)
   }, [])
- 
+
   const toggle = () => {
     const next = theme === 'dark' ? 'light' : 'dark'
     setTheme(next)
     document.documentElement.setAttribute('data-theme', next)
     localStorage.setItem('portfolio-theme', next)
   }
- 
-  // Prevent hydration flash
+
   if (!mounted) {
     return <div style={{ width: 40, height: 40 }} />
   }
- 
+
   return (
     <button
       onClick={toggle}
@@ -64,7 +62,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Keep local theme state in sync so mobile menu bg matches
   useEffect(() => {
     const saved = localStorage.getItem('portfolio-theme') || 'dark'
     setTheme(saved)
@@ -116,6 +113,7 @@ export default function Header() {
             textDecoration: 'none',
             letterSpacing: '-0.02em',
             transition: 'color 0.3s ease',
+            flexShrink: 0,
           }}
           onMouseEnter={e => e.target.style.color = 'var(--accent)'}
           onMouseLeave={e => e.target.style.color = 'var(--text)'}
@@ -125,14 +123,13 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <nav
+          className="header-desktop-nav"
           style={{
-            display: 'flex',
             gap: '32px',
             position: 'absolute',
             left: '50%',
             transform: 'translateX(-50%)',
           }}
-          className="hidden md:flex"
         >
           {navLinks.map(({ href, label }) => {
             const isActive = pathname === href
@@ -151,6 +148,7 @@ export default function Header() {
                   transition: 'color 0.3s ease',
                   position: 'relative',
                   paddingBottom: '4px',
+                  whiteSpace: 'nowrap',
                 }}
                 onMouseEnter={e => { if (!isActive) e.currentTarget.style.color = 'var(--text)' }}
                 onMouseLeave={e => { if (!isActive) e.currentTarget.style.color = 'var(--text-muted)' }}
@@ -172,12 +170,12 @@ export default function Header() {
         </nav>
 
         {/* Right side */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
           <ThemeToggle />
-          
+
           <Link
             href="/contact"
-            className="hidden md:inline-flex btn-primary"
+            className="btn-primary header-desktop-contact"
             style={{ padding: '8px 20px', fontSize: '13px' }}
           >
             <MessageOutlined />
@@ -187,7 +185,7 @@ export default function Header() {
           {/* Mobile menu toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden"
+            className="header-mobile-toggle"
             style={{
               background: 'none',
               border: 'none',
@@ -248,6 +246,32 @@ export default function Header() {
           </Link>
         </div>
       )}
+
+      <style>{`
+        .header-desktop-nav {
+          display: flex;
+        }
+        .header-desktop-contact {
+          display: inline-flex;
+        }
+        .header-mobile-toggle {
+          display: none;
+        }
+
+        @media (max-width: 768px) {
+          .header-desktop-nav {
+            display: none !important;
+          }
+          .header-desktop-contact {
+            display: none !important;
+          }
+          .header-mobile-toggle {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      `}</style>
     </>
   )
 }
