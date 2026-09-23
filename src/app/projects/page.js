@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { GithubOutlined, LinkOutlined, ArrowRightOutlined } from '@ant-design/icons'
+import { SiGitlab } from 'react-icons/si'
 import Link from 'next/link'
 
 const projects = [
@@ -9,8 +10,8 @@ const projects = [
     id: 1,
     title: 'Portfolio Website',
     description: 'Personal portfolio website showcasing my projects, skills, and experience. Built with Next.js, Tailwind CSS, and Ant Design with smooth animations and a modern dark UI.',
-    tech: ['Next.js', 'Tailwind CSS', 'Ant Design', 'Lottie'],
-    github: 'https://github.com/ShineLay24',
+    tech: ['Next.js', 'Tailwind CSS', 'Ant Design'],
+    github: 'https://github.com/ShineLay24/my-portfolio',
     live: '#',
     category: 'Web App',
     accent: '#e63946',
@@ -18,58 +19,36 @@ const projects = [
   },
   {
     id: 2,
-    title: 'React Weather App',
-    description: 'A real-time weather application using OpenWeatherMap API. Features current conditions, 5-day forecast, location search, and responsive design.',
-    tech: ['React.js', 'REST API', 'CSS3', 'Axios'],
-    github: 'https://github.com/ShineLay24',
-    live: '#',
-    category: 'Web App',
-    accent: '#4ecdc4',
-    gradient: 'linear-gradient(135deg, rgba(78,205,196,0.12) 0%, rgba(78,205,196,0.02) 100%)',
-  },
-  {
-    id: 3,
-    title: 'Task Management App',
-    description: 'A Kanban-style task manager built with React and local storage. Supports drag-and-drop, priority labels, deadlines, and board management.',
-    tech: ['React.js', 'DnD Kit', 'LocalStorage', 'Tailwind'],
-    github: 'https://github.com/ShineLay24',
-    live: '#',
-    category: 'Productivity',
-    accent: '#c9a84c',
-    gradient: 'linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.02) 100%)',
-  },
-  {
-    id: 4,
-    title: 'E-Commerce UI',
-    description: 'A pixel-perfect front-end implementation of an e-commerce product page, featuring product gallery, size selector, cart functionality, and responsive layout.',
-    tech: ['Next.js', 'Tailwind CSS', 'React Hooks', 'Framer Motion'],
-    github: 'https://github.com/ShineLay24',
-    live: '#',
-    category: 'UI/UX',
+    title: 'SneakHype',
+    description: 'A fully built sneaker e-commerce store — product catalog, category browsing, cart, and checkout flow — designed and launched with no custom code.',
+    tech: ['Wix Studio', 'No-Code'],
+    github: null,
+    live: 'https://sneakhype247.wixstudio.com/sneakhype',
+    category: 'E-Commerce',
     accent: '#a855f7',
     gradient: 'linear-gradient(135deg, rgba(168,85,247,0.12) 0%, rgba(168,85,247,0.02) 100%)',
   },
   {
-    id: 5,
-    title: 'Blog Platform',
-    description: 'A full-stack blog platform with markdown support, category filtering, and an admin dashboard. Features SEO optimization and static site generation with Next.js.',
-    tech: ['Next.js', 'Markdown', 'SSG', 'Tailwind CSS'],
-    github: 'https://github.com/ShineLay24',
-    live: '#',
-    category: 'Full Stack',
-    accent: '#22c55e',
-    gradient: 'linear-gradient(135deg, rgba(34,197,94,0.12) 0%, rgba(34,197,94,0.02) 100%)',
+    id: 3,
+    title: 'RI IT College',
+    description: 'Static institutional website for RI IT College, built and maintained homepage layouts and login/register pages with a focus on clean UI/UX and responsive design.',
+    tech: ['HTML5', 'CSS3', 'JavaScript(Next.js)', 'PHP(Laravel)'],
+    github: null,
+    live: 'https://ri-institute.com/#',
+    category: 'Institutional Website',
+    accent: '#4ecdc4',
+    gradient: 'linear-gradient(135deg, rgba(78,205,196,0.12) 0%, rgba(78,205,196,0.02) 100%)',
   },
   {
-    id: 6,
-    title: 'Component Library',
-    description: 'A custom React component library with 20+ reusable UI components including buttons, modals, forms, and data displays. Built with TypeScript and Storybook.',
-    tech: ['React.js', 'TypeScript', 'Storybook', 'CSS Modules'],
-    github: 'https://github.com/ShineLay24',
-    live: '#',
-    category: 'Library',
-    accent: '#f59e0b',
-    gradient: 'linear-gradient(135deg, rgba(245,158,11,0.12) 0%, rgba(245,158,11,0.02) 100%)',
+    id: 4,
+    title: 'ATS (Advanced Technology Solution)',
+    description: 'Fixed and improved an existing company website as a front-end developer, working alongside a senior developer to resolve bugs and refine the UI using PHP Laravel, Bootstrap, and JavaScript. Not yet deployed to production.',
+    tech: ['PHP', 'Laravel', 'Bootstrap', 'JavaScript'],
+    github: 'https://gitlab.com/ShineLay24/ats-web-proj',
+    live: null,
+    category: 'Institutional Website',
+    accent: '#1a1915',
+    gradient: 'linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.02) 100%)',
   },
 ]
 
@@ -82,13 +61,19 @@ function FadeIn({ children, delay = 0 }) {
     return () => obs.disconnect()
   }, [])
   return (
-    <div ref={ref} style={{ 
-      opacity: visible ? 1 : 0, 
-      transform: visible ? 'none' : 'translateY(24px)', 
-      transition: `opacity 0.6s ${delay}s ease, transform 0.6s ${delay}s ease` }}>
+    <div ref={ref} style={{
+      opacity: visible ? 1 : 0,
+      transform: visible ? 'none' : 'translateY(24px)',
+      transition: `opacity 0.6s ${delay}s ease, transform 0.6s ${delay}s ease`
+    }}>
       {children}
     </div>
   )
+}
+
+function RepoIcon({ url }) {
+  if (url && url.includes('gitlab.com')) return <SiGitlab />
+  return <GithubOutlined />
 }
 
 export default function ProjectsPage() {
@@ -112,23 +97,25 @@ export default function ProjectsPage() {
             marginBottom: '16px',
           }}>
             Selected{' '}
-            <span style={{ 
-              fontFamily: 'var(--font-serif)', 
-              fontStyle: 'italic', 
-              fontWeight: 400, 
-              color: 'var(--accent)' }}>
+            <span style={{
+              fontFamily: 'var(--font-serif)',
+              fontStyle: 'italic',
+              fontWeight: 400,
+              color: 'var(--accent)'
+            }}>
               Projects
             </span>
           </h1>
-          <p style={{ 
-            fontSize: '17px', 
-            color: 'var(--text-muted)', 
-            maxWidth: '560px', 
-            lineHeight: 1.7, 
-            marginBottom: '48px' }}>
-            A collection of projects that showcase my approach to front-end development, user-focused design, 
+          <p style={{
+            fontSize: '17px',
+            color: 'var(--text-muted)',
+            maxWidth: '560px',
+            lineHeight: 1.7,
+            marginBottom: '48px'
+          }}>
+            A collection of projects that showcase my approach to front-end development, user-focused design,
             and transforming ideas into functional and respoonsive web applications.
-            </p>
+          </p>
 
           {/* Filter */}
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '64px' }}>
@@ -291,26 +278,30 @@ function ProjectCard({ project }) {
 
         {/* Actions */}
         <div style={{ display: 'flex', gap: '12px', paddingTop: '20px', borderTop: '1px solid var(--border)' }}>
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-outline"
-            style={{ flex: 1, justifyContent: 'center', padding: '10px', fontSize: '13px' }}
-          >
-            <GithubOutlined />
-            Code
-          </a>
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary"
-            style={{ flex: 1, justifyContent: 'center', padding: '10px', fontSize: '13px', background: project.accent }}
-          >
-            <LinkOutlined />
-            Live Demo
-          </a>
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline"
+              style={{ flex: 1, justifyContent: 'center', padding: '10px', fontSize: '13px' }}
+            >
+              <RepoIcon url={project.github} />
+              Code
+            </a>
+          )}
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+              style={{ flex: 1, justifyContent: 'center', padding: '10px', fontSize: '13px', background: project.accent }}
+            >
+              <LinkOutlined />
+              Live Demo
+            </a>
+          )}
         </div>
       </div>
     </div>
