@@ -1,5 +1,6 @@
 import Footer from '@/component/footer'
 import Header from '@/component/header'
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import 'antd/dist/reset.css';
 import './globals.css'
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
         <Header />
         <main>{children}</main>
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   )
