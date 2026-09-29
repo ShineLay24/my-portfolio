@@ -1,13 +1,15 @@
-import Footer from '@/component/footer'
-import Header from '@/component/header'
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import 'antd/dist/reset.css';
-import './globals.css'
+import Footer from "@/component/footer";
+import Header from "@/component/header";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
+import "antd/dist/reset.css";
+import "./globals.css";
 
 export const metadata = {
-  title: 'Htet Aung Shine Portfolio',
-  description: 'Front-End Developer portfolio — building fast, beautiful, and interactive web experiences with React, Next.js, and modern tooling.',
-}
+  title: "Htet Aung Shine Portfolio",
+  description:
+    "Front-End Developer portfolio — building fast, beautiful, and interactive web experiences with React, Next.js, and modern tooling.",
+};
 
 export default function RootLayout({ children }) {
   return (
@@ -17,7 +19,8 @@ export default function RootLayout({ children }) {
         <main>{children}</main>
         <Footer />
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
-  )
+  );
 }
